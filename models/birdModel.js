@@ -1,3 +1,7 @@
+const {Pool} = require("pg");
+const db_url = process.env.DATABASE_URL;
+const pool = new Pool({connectionString: db_url});
+
 function searchByBreeder(breeder, callback) {
 	console.log("Search for bird from: " + breeder);
 	var results = {
