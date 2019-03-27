@@ -9,7 +9,7 @@ function searchBySpecie(){
 		for(var i = 0; i < data.birds.length; i++){
 			var bird = data.birds[i];
 			console.log(bird);
-			$('#ulBirds').append("<li>" + bird.name + " " + bird.breeder + "</li>");
+			$('#ulBirds').append("<li>" + bird.name + " Info: " + bird.info + "</li>");
 		}
 	});
 	
@@ -21,6 +21,11 @@ console.log("searching by breeder");
 	$.get("/searchByBreeder",{breeder:breeder}, function(data){
 		console.log("Back from the server with: ");
 		console.log(data);
+		for(var i = 0; i < data.birds.length; i++){
+			var bird = data.birds[i];
+			console.log(bird);
+			$('#ulBirds').append("<li>Name: " + bird.name + " Info: " + bird.info + "</li>");
+		}
 	});
 	
 }
