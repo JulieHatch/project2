@@ -5,15 +5,34 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Welcome to Bird Search</h1><br><br>
+<h1>Welcome to Bird Search</h1>
 	<p>Will have much better functionality later on in the process...and will
 	hopefully look much better by the next milestone.</p><br><br>
+	<button onclick="logout();">logout</button><br><br><br>
+	<!--
+	<form>
+		Name:
+		<input type="text" id="name" placeholder="Name"></input><br>
+		DOB:
+		<input type="date" id="birth" ></input><br>
+		Cost:
+		<input type="text" id="cost" placeholder="Cost"></input><br>
+		Specie:
+		<input type="text" id="specie" placeholder="Specie"></input><br>
+		Breeder:
+		<input type="text" id="breeder" placeholder="Breeder"></input><br>
+		Info:<br>
+		<textarea name="info"></textarea>
+        <br />
+        <input type="submit" value="Add Bird">
+	</form>	<br><br>-->
+
 	<input type="text" id="breeder" placeholder="Breeder">
-		<button onclick="searchByBreeder()">Search By Breeder(will function soon)</button>
+		<button onclick="searchByBreeder()">Search By Breeder</button>
 	</input><br>
 	
 	<input type="text" id="specie" placeholder="Specie">
-		<button onclick="searchBySpecie()">Search By Name (will be specie soon)</button>
+		<button onclick="searchBySpecie()">Search By Specie</button>
 	</input><br>
 
 	<div>

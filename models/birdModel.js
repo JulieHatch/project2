@@ -4,9 +4,9 @@ const pool = new Pool({connectionString: db_url});
 
 function searchByBreeder(breeder, callback) {
 	console.log("Search for bird from: " + breeder);
-	var sql = "SELECT bird_id, name, info, cost, birth FROM Bird";
-	
-	pool.query(sql, function(err, db_results){
+	var sql = "SELECT bird_id, name, info, cost, birth FROM Bird WHERE breeder_id =(SELECT breeder_id FROM Breeder WHERE name = $1)";
+	var params = [breeder];
+	pool.query(sql, params, function(err, db_results){
 		if(err){
 			throw err;
 		}
@@ -23,7 +23,7 @@ function searchByBreeder(breeder, callback) {
 }
 function searchBySpecie(specie, callback) {
 	console.log("Search for bird from: " + specie);
-	var sql = "SELECT bird_id, name, info, cost, birth FROM Bird WHERE name=$1::text";
+	var sql = "SELECT bird_id, name, info, cost, birth FROM Bird WHERE specie_id=(SELECT specie_id FROM Specie WHERE name = $1)";
 	var params = [specie];
 	pool.query(sql, params, function(err, db_results){
 		if(err){

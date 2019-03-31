@@ -1,6 +1,7 @@
 DROP TABLE Bird;
 DROP TABLE Breeder;
 DROP TABLE Specie;
+DROP TABLE users;
 
 CREATE TABLE Specie
 (
@@ -25,6 +26,13 @@ cost int NOT NULL,
 birth date NOT NULL,
 specie_id int NOT NULL REFERENCES Specie(specie_id),
 breeder_id int NOT NULL REFERENCES Breeder(breeder_id)
+);
+
+CREATE TABLE users
+(
+id SERIAL PRIMARY KEY,
+username varchar(100),
+password varchar(250)
 );
 
 INSERT INTO Specie(name) VALUES 
