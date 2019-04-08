@@ -2,42 +2,102 @@
 <html>
 <head>
 <script src="birds-clientside.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
-<h1>Welcome to Bird Search</h1>
+<body onload="getBirds()">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li ><a onclick="homeView()">Home</a></li>
+        <li><a onclick="searchView()">Birds</a></li>
+        <li><a onclick="breederView()">Breeders</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.html">Login <span class="glyphicon glyphicon-log-in"></span> </a></li>
+      </ul>
+    </div>
+</nav>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Welcome to Bird Search</h1>    
+			<p>We hope you can find what you are looking for</p>
+		</div>
+	</div>
 	<p>Will have much better functionality later on in the process...and will
 	hopefully look much better by the next milestone.</p><br><br>
 	<button onclick="logout();">logout</button><br><br><br>
-	<!--
-	<form>
-		Name:
-		<input type="text" id="name" placeholder="Name"></input><br>
-		DOB:
-		<input type="date" id="birth" ></input><br>
-		Cost:
-		<input type="text" id="cost" placeholder="Cost"></input><br>
-		Specie:
-		<input type="text" id="specie" placeholder="Specie"></input><br>
-		Breeder:
-		<input type="text" id="breeder" placeholder="Breeder"></input><br>
-		Info:<br>
-		<textarea name="info"></textarea>
-        <br />
-        <input type="submit" value="Add Bird">
-	</form>	<br><br>-->
-
-	<input type="text" id="breeder" placeholder="Breeder">
-		<button onclick="searchByBreeder()">Search By Breeder</button>
-	</input><br>
+	<span id="home">
+	<!-- TODO: FOR home
 	
-	<input type="text" id="specie" placeholder="Specie">
-		<button onclick="searchBySpecie()">Search By Specie</button>
-	</input><br>
+		2. Make input look nice
+		3. Display the birds the breeder has available
+		4. Make input only show when breeder wants to add
+		5. Add a delete button
+		Add logout
+		// logout glyphicon glyphicon-log-out
+		-->
+	</span>
+	<span id="breedersView" style="display:none;"><!-- TODO: FOR breedersView
+		
+		2. Make input look nice
+		3. Display the birds the breeder has available
+		4. Make input only show when breeder wants to add
+		5. Add a delete button //glyphicon glyphicon-remove-circle
+		--><div>
+			<h2 class="container text-center">Your Birds:</h2>
+			<ul id="ulBird"></ul>
+		</div>
+		<div class="container-fluid">
+		<div class="row">
+		
+		</div></div>
+		<button type="button" class="btn btn-info" onclick="addBirdView()">
+				Add Bird 
+			</button>
+	<span id="addBird" style="display:none;">
+	
+			<div class="col-xs-4">
+			<label>Name:</label>
+			<input class="form-control" type="text" id="name" placeholder="Name"></input>
+			<label>DOB:</label>
+			<input class="form-control" type="date" id="birth" ></input>
+			<label>Cost:</label>
+			<input class="form-control" type="text" id="cost" placeholder="$Cost"></input>
+			<label>Specie:</label>
+			<input class="form-control" type="text" id="specie" placeholder="Specie"></input>
+			<label>Breeder:</label>
+			<input class="form-control" type="text" id="breeder" placeholder="Breeder"></input>
+			<label>Info:</label>
+			<textarea class="form-control" id="info" name="info"></textarea>
+			<br /></div>
+			<button onclick="addBird()" >Add Bird</button>
+			<br><br>
+	
+	</span></span>
+	<!-- TODO: FOR Search
+		1. Make it accessible by onclicking for birds
+		2. Make input look nice
+		3. Place the search in a box
+		4. Make the results only show up once & disapear after a new search is clicked
+		-->
+	<span id="search" style="display:none;">
+		<input type="text" id="breeders" placeholder="Breeder">
+			<button type="button" class="btn btn-info" onclick="searchByBreeder()">
+				<span class="glyphicon glyphicon-search"></span> Search By Breeder
+			</button>
+		</input><br>
+		
+		<input type="text" id="species" placeholder="Specie">
+			<button type="button" class="btn btn-info" onclick="searchBySpecie()">
+				<span class="glyphicon glyphicon-search"></span> Search By Specie 
+			</button>
+		</input><br>
 
-	<div>
-		<h2>Birds:</h2>
-		<ul id="ulBirds"></ul>
-	</div>
+		<div>
+			<h2>Birds:</h2>
+			<ul id="ulBirds"></ul>
+		</div>
+	</span>
 </body>
 </html>

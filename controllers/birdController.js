@@ -14,8 +14,8 @@ function searchBySpecie(req, res) {
 }
 
 function getBirdList(req, res) {
-	var id = 1;
-	birdModel.getAllBirds(id, function(error, results){
+	var breeder = req.session.user;
+	birdModel.searchByBreeder(breeder, function(error, results) {
 		res.json(results);
 	});
 }
@@ -30,12 +30,20 @@ function getBirdById(req, res) {
 
 function insertNewBird(req, res) {
 	
-	var specie = "Turtle";
-	var name = "Puma";
-	var breeder = "Penny";
-	var cost = 20;
-	var info = "turtle dove ha";
-	birdModel.insertNewBird(specie, name, breeder, cost, info, function(error, results) {
+	var specie = req.body.specie;
+	var name = req.body.name;
+	var breeder = req.body.breeder;
+	var cost = req.body.cost;
+	var info = req.body.info;
+	var birth = req.body.birth;
+	
+	birdModel.insertNewBird(name, info, cost, birth, specie, breeder, function(error, results) {
+		res.json(results);
+	});
+}
+function deleteBird(req, res) {
+	var bird_id = req.query.bird_id;
+	birdModel.deleteBird(bird_id, function(error, results) {
 		res.json(results);
 	});
 }
@@ -54,5 +62,6 @@ module.exports = {
 	getBirdList: getBirdList,
 	getBirdById: getBirdById,
 	insertNewBird: insertNewBird,
+	deleteBird: deleteBird,
 	assignBreederToBird: assignBreederToBird
 };

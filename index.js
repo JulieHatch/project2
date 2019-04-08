@@ -37,7 +37,8 @@ app.get("/searchByBreeder", loginController.verifyLogin, birdController.searchBy
 app.get("/searchBySpecie", loginController.verifyLogin, birdController.searchBySpecie);
 app.get("/birds", loginController.verifyLogin, birdController.getBirdList);
 app.get("/bird", loginController.verifyLogin, birdController.getBirdById);
-app.post("/bird", loginController.verifyLogin, birdController.insertNewBird);
+app.post("/addBird", loginController.verifyLogin, birdController.insertNewBird);
+app.get("/deleteBird", loginController.verifyLogin, birdController.deleteBird);
 app.post("/assignBreederToBird", loginController.verifyLogin, birdController.assignBreederToBird);
 
 // handle login requests
