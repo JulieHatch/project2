@@ -19,7 +19,7 @@ function checkPass(username, password, callback) {
     });
 }
 function createUser(username, password, callback) {
-    const sql = "INSERT INTO Breeder (username, password) VALUES($1, $2) RETURNING  id";
+    const sql = "INSERT INTO Breeder (username, password) VALUES($1, $2) RETURNING  breeder_id";
     const params = [username, password];
     myPool.query(sql, params, function(error, result) {
         if (error) {
