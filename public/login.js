@@ -1,11 +1,10 @@
 /*
 TODO FOR LOGIN STUFF:
-	1. Write better validation 				2 hr
+	1. Write better validation 					2 hr
 		a. require secure passwords
 		b. do not allow duplicate usernames
 		c. require better usernames
-	2. HASH									2 hr
-	3. Make it look nice				OPTIONAL (for this week)
+	2. HASH										2 hr
 */
 
 function validate() {

@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Login</title>
+	
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -9,14 +11,21 @@
 	<script src="login.js"></script>
 </head>
 <body>
-<div id="login_box">
-	<input type="text" id="username" placeholder="username"><br>
-	<input type="password" id="password" placeholder="password"><br>
-	<button onclick="login();">Log in</button>
-	<button onclick="newUser();">New User</button><br>
-	<br>
+	<div class="container" id="login_box"><div class="well well-lg" style="max-width:450px;min-width:300px;">
+	<h3>Please Login</h3><br>
+	<div class="input-group">
+		<input type="text" class="form-control" id="username" placeholder="username"><br>
+		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>   
+    </div><br>
+	<div class="input-group">
+		<input type="password" class="form-control" id="password" placeholder="password"><br>
+	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>   
+    </div><br>
+		<button class="btn btn-info" onclick="login();">Log in</button>
+		<button class="btn btn-info" onclick="newUser();">New User</button><br>
+		<br>
 	<div id="status"></div>
-</div>
+	</div></div>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ DROP TABLE Specie;
 
 CREATE TABLE Specie
 (
-specie_id SERIAL PRIMARY KEY,
+specie_id int PRIMARY KEY,
 name varchar(100) NOT NULL
 );
 
@@ -26,11 +26,19 @@ specie_id int NOT NULL REFERENCES Specie(specie_id),
 breeder_id int NOT NULL REFERENCES Breeder(breeder_id)
 );
 
-INSERT INTO Specie(name) VALUES 
-('Macaw'),
-('Parakeet'),
-('Dove'),
-('Chicken');
+INSERT INTO Specie(specie_id, name) VALUES
+(1, 'Caique'), 
+(2, 'Canary'),
+(3, 'Chicken'),
+(4, 'Cockatiel'),
+(5, 'Cockatoo'),
+(6, 'Conure'),
+(7, 'Dove'),
+(8, 'Finch'),
+(9, 'Lovebird'),
+(10, 'Macaw'),
+(11, 'Parakeet'),
+(12, 'Toucan');
 
 INSERT INTO Breeder(username, password) VALUES 
 ('Macaw Lady', 'macaw'),
