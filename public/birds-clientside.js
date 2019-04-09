@@ -88,7 +88,7 @@ function addBird() {
 	home.style.display = "none";
     search.style.display = "none";
     breedersView.style.display = "block";
-	
+	getBirds();
 }
 
 function getBirds(){
