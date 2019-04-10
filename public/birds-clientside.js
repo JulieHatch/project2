@@ -60,6 +60,7 @@ function breederView() {
     home.style.display = "none";
     search.style.display = "none";
     breedersView.style.display = "block";
+	getBirds();
 
 }
 function addBirdView() {
@@ -82,13 +83,12 @@ function addBird() {
 	$.post("/addBird",{name:name, birth:birth, info:info, cost:cost, specie:specie, breeder:breeder}, function(data){
 		console.log("Back from the server with:");
 		console.log(data);
+		getBirds();
 	});
-	getBirds();
 	addBird.style.display = "none";
 	home.style.display = "none";
     search.style.display = "none";
     breedersView.style.display = "block";
-	getBirds();
 }
 
 function getBirds(){
@@ -117,9 +117,9 @@ function deleteBird(bird_id){
 	$.get("/deleteBird",{bird_id:bird_id}, function(data){
 		console.log("Back from the server after deletion with:");
 		console.log(data);
-		
+		getBirds();
 	});
-	getBirds();
+	
 }
 function editBirdView(){
 	var editBird = document.getElementById("editBird");
