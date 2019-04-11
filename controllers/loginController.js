@@ -3,6 +3,7 @@ function handleLogin(request, response) {
 	var result = {success: false};
     const username = request.body.username;
     const password = request.body.password;
+	
     loginModel.checkPass(username, password, function(error, data) {
 		if (error){
             console.log("An error occurred in the DB Controller");
@@ -18,7 +19,6 @@ function handleLogin(request, response) {
 }
 
 function handleRegister(request, response) {
-
 	var result = {success: false};
     const username = request.body.username;
     const password = request.body.password;
@@ -40,7 +40,6 @@ function handleRegister(request, response) {
 function handleLogout(request, response) {
 	var result = {success: false};
 
-	// We should do better error checking here to make sure the parameters are present
 	if (request.session.user) {
 		request.session.destroy();
 		result = {success: true};
@@ -51,7 +50,6 @@ function handleLogout(request, response) {
 function verifyLogin(request, response, next) {
 	if (request.session.user) {
 		// They are logged in!
-
 		// pass things along to the next function
 		next();
 	} else {

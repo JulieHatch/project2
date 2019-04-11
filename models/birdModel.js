@@ -21,6 +21,7 @@ function searchByBreeder(breeder, callback) {
 		callback(null, results);	
 	});
 }
+
 function searchBySpecie(specie, callback) {
 	console.log("Search for bird from: " + specie);
 	var sql = "SELECT bird_id, name, info, cost, birth FROM Bird WHERE specie_id=(SELECT specie_id FROM Specie WHERE name = $1)";
@@ -39,22 +40,6 @@ function searchBySpecie(specie, callback) {
 		};
 		callback(null, results);	
 	});
-}
-
-function getAllBirds(callback) {
-	var results = {
-		birds: [
-			{id:1, name:"alex", breeder:"Jen", cost:10, info:"test"},
-			{id:2, name:"sally", breeder:"Jen2", cost:20, info:"test2"},
-			{id:3, name:"max", breeder:"Jen3", cost:30, info:"test3"}
-		]
-	};
-	callback(null, results);
-}
-
-function getBirdById(id, callback) {
-	var results = {id:id, name:"dove"};
-	callback(null, results);
 }
 
 function insertNewBird(name, info, cost, birth, specie, breeder, callback) {
@@ -93,18 +78,9 @@ function deleteBird(bird_id, callback) {
 	});
 }
 
-function assignBreederToBird(specieID, breederId, callback) {
-	var results = {success:true};
-	callback(null, results);
-}
-
-
 module.exports = {
 	searchByBreeder: searchByBreeder,
 	searchBySpecie: searchBySpecie,
-	getAllBirds: getAllBirds,
-	getBirdById: getBirdById,
 	insertNewBird: insertNewBird,
-	deleteBird: deleteBird,
-	assignBreederToBird: assignBreederToBird
+	deleteBird: deleteBird
 };

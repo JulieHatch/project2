@@ -4,98 +4,162 @@
 <script src="birds-clientside.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <style>
+ footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+      margin-top: 25px;
+    }
+  </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li ><a onclick="homeView()">Home</a></li>
-        <li><a onclick="searchView()">Birds</a></li>
-        <li><a onclick="breederView()">Breeders</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.html">Login <span class="glyphicon glyphicon-log-in"></span> </a></li>
-      </ul>
-    </div>
-</nav>
-	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>Welcome to Bird Search</h1>    
-			<p>We hope you can find what you are looking for</p>
+	<!-- The Navigation Bar -->
+	<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+	  <div class="container-fluid">
+		  <ul class="nav navbar-nav">
+			<li><a onclick="searchView()">Birds</a></li>
+			<li><a onclick="breederView()">Breeders</a></li>
+			<li ><a onclick="#">About us</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="login.html">Login <span class="glyphicon glyphicon-log-in"></span> </a></li>
+			<li><a onclick="logout();">Logout <span class="glyphicon glyphicon-log-out"></span> </a></li>
+		  </ul>
 		</div>
-	</div><br><br>
-	<button onclick="logout();">logout</button><br><br><br>
-	<span id="home">
-	<!-- TODO: FOR home
+	</nav>
 	
-		2. Make input look nice
-		3. Display the birds the breeder has available
-		4. Make input only show when breeder wants to add
-		5. Add a delete button
-		Add logout
-		// logout glyphicon glyphicon-log-out
-		-->
-	</span>
-	<span id="breedersView" style="display:none;"><!-- TODO: FOR breedersView
+	<!-- The Jumbotron Screen -->
+	<div class="jumbotron">
+		<div class="container text-center" >
+			<h1>Welcome to Bird Search</h1>    
+			<p>We hope you can find the hatchling you are looking for</p>
+		</div>
+	</div>
+	
+	<!-- The Breeder Page View -->
+	<span id="breedersView" class="container" style="display:none;">
+	<div class="container">
 		
-		2. Make input look nice
-		3. Display the birds the breeder has available
-		4. Make input only show when breeder wants to add
-		5. Add a delete button //glyphicon glyphicon-remove-circle
-		--><div>
+			<button id="addBtn" type="button" class="btn btn-info" onclick="addBirdView()">
+					Add Bird 
+			</button>
+			<span id="addBird" style="display:none;">
+				<div class="col-xs-4">
+					<label id="iname">Name:</label>
+					<input class="form-control" type="text" id="name" placeholder="Name"></input>
+					<label id="iDOB">DOB:</label>
+					<input class="form-control" type="date" id="birth" ></input>
+					<label id="iCost">Cost:</label>
+					<input class="form-control" type="text" id="cost" placeholder="$Cost"></input>
+					<label id="iSpecie">Specie:</label>
+					<select class="form-control" type="text" id="specie">
+						<option value="Caique">Caique</option>
+						<option value="Canary">Canary</option>
+						<option value="Chicken">Chicken</option>
+						<option value="Cockatiel">Cockatiel</option>
+						<option value="Cockatoo">Cockatoo</option>
+						<option value="Conure">Conure</option>
+						<option value="Dove">Dove</option>
+						<option value="Finch">Finch</option>
+						<option value="Lovebird">Lovebird</option>
+						<option value="Macaw">Macaw</option>
+						<option value="Parakeet">Parakeet</option>
+						<option value="Toucan">Toucan</option>
+					</select>
+					<label id="iInfo">Info:</label>
+					<textarea class="form-control" id="info" name="info"></textarea>
+					<br />
+					<button class="btn btn-info" onclick="addBird()" >Add Bird</button>
+				</div>
+				<br><br>
+			</span>
+		</div>
+	<!-- TODO: FOR breedersView
+		1. Make input look nice
+		2. Make input only show when breeder wants to add<br><br>
+		--><br><br>
+		<div>
 			<h2 class="container text-center">Your Birds:</h2>
 			<ul id="ulBird"></ul>
-		</div>
-		<div class="container-fluid">
-		<div class="row">
+		</div><br>
 		
-		</div></div>
-		<button type="button" class="btn btn-info" onclick="addBirdView()">
-				Add Bird 
-			</button>
-	<span id="addBird" style="display:none;">
-	
-			<div class="col-xs-4">
-			<label>Name:</label>
-			<input class="form-control" type="text" id="name" placeholder="Name"></input>
-			<label>DOB:</label>
-			<input class="form-control" type="date" id="birth" ></input>
-			<label>Cost:</label>
-			<input class="form-control" type="text" id="cost" placeholder="$Cost"></input>
-			<label>Specie:</label>
-			<input class="form-control" type="text" id="specie" placeholder="Specie"></input>
-			<label>Breeder:</label>
-			<input class="form-control" type="text" id="breeder" placeholder="Breeder"></input>
-			<label>Info:</label>
-			<textarea class="form-control" id="info" name="info"></textarea>
-			<br /></div>
-			<button onclick="addBird()" >Add Bird</button>
-			<br><br>
-	
-	</span></span>
-	<!-- TODO: FOR Search
-		1. Make it accessible by onclicking for birds
-		2. Make input look nice
-		3. Place the search in a box
-		4. Make the results only show up once & disapear after a new search is clicked
-		-->
-	<span id="search" style="display:none;">
-		<input type="text" id="breeders" placeholder="Breeder">
-			<button type="button" class="btn btn-info" onclick="searchByBreeder()">
-				<span class="glyphicon glyphicon-search"></span> Search By Breeder
-			</button>
-		</input><br>
-		
-		<input type="text" id="species" placeholder="Specie">
-			<button type="button" class="btn btn-info" onclick="searchBySpecie()">
-				<span class="glyphicon glyphicon-search"></span> Search By Specie 
-			</button>
-		</input><br>
+	</span>
 
-		<div>
-			<h2>Birds:</h2>
-			<ul id="ulBirds"></ul>
+	<!-- The Search Page View -->
+	<span id="search">
+		<div class="container">
+			<h4>Welcome to Hatchling finder, where you can find your perfect feathery friend! 
+				We provide a large selecion of beautiful birds for purchase from many different breeders.
+				If you have any questions, try googling them! We will not help you. Many of our customers
+				have reported how fun and delicious the chickens have been from this website.
+				We currently do not have payment options allowed on this site, but if you would like,
+				you can try to contact the breeder yourself in order to figure something else out.
+				Please feel free to browse our site and admire the many pages/funtions that we provide!
+			</h4><br>
+		</div>
+		<div class="container text-center">
+			<div class="form-group row">
+				<div class="col-xs-4">
+					<input class="form-control" type="text" id="breeders" placeholder="Breeder">
+					</input>
+				</div>
+				<span class="col-xs-2">
+					<button type="button" class="btn btn-info" onclick="searchByBreeder()">
+						<span class="glyphicon glyphicon-search"></span> Search By Breeder
+					</button>
+				</span>
+				<div class="col-xs-4">
+					<select class="form-control" type="text" id="species">
+						<option value="Caique">Caique</option>
+						<option value="Canary">Canary</option>
+						<option value="Chicken">Chicken</option>
+						<option value="Cockatiel">Cockatiel</option>
+						<option value="Cockatoo">Cockatoo</option>
+						<option value="Conure">Conure</option>
+						<option value="Dove">Dove</option>
+						<option value="Finch">Finch</option>
+						<option value="Lovebird">Lovebird</option>
+						<option value="Macaw">Macaw</option>
+						<option value="Parakeet">Parakeet</option>
+						<option value="Toucan">Toucan</option>
+					</select>
+				</div>
+				<span class="col-xs-2">
+					<button type="button" class="btn btn-info" onclick="searchBySpecie()">
+						<span class="glyphicon glyphicon-search"></span> Search By Specie 
+					</button>
+				</span>
+			</div>
+			<br><br>
+			
+			<div id="ulBirds"></div>
+		</div>
+		<br>
+		<div class="container">
+			<div class="container-fluid bg-3 text-center">    
+			  <div class="row">
+					<div class="col-sm-4">
+					  <img src="pictures/duckling.jpg" alt="duckling" width="300" height="300">
+					  <h4>A cute baby bird!</h4>
+					</div>
+					<div class="col-sm-4">
+					  <img src="pictures/chicken.jpg" alt="chicken" width="300" height="300">
+					  <h4>Chickens can be fun and nutritious.</h4>
+					</div>
+					<div class="col-sm-4">
+					  <img src="pictures/macaw.jpg" alt="macaw" width="300" height="300">
+					  <h4>A blue macaw how pretty.</h4>
+					</div>
+				</div>
+			</div>
 		</div>
 	</span>
+	<br>
+	
+	<!-- The Footer -->
+	<footer class="container-fluid text-center">
+		<p>Created by Hatching Creative Solutions&trade;<br>Feel free to visit our website after 8/1/2019, our team would be happy to help.</p>  
+	</footer>
+
 </body>
 </html>
